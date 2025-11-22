@@ -1,4 +1,4 @@
-import Card from './Card';
+import StatCard from './StatCard';
 import { ProcessedDashboardData } from '@/src/types/dashboard';
 import Image from 'next/image';
 
@@ -23,13 +23,13 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4 lg:px-10 container mx-auto">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-md mb-2">Saldo total</p>
+          <p className="text-md mb-2 font-medium">Saldo total</p>
           <div className="flex items-center gap-4">
-            <h2 className="text-4xl">{formatCurrency(saldoTotal.valor)}</h2>
-            <div className="flex items-center gap-1">
+            <h2 className="text-4xl font-medium">{formatCurrency(saldoTotal.valor)}</h2>
+            <div className="flex items-center gap-3">
               <Image src="/thunder.png" alt="Rendimento" width={24} height={24} />
               <span className="text-sm">rendendo {saldoTotal.rendimento}%</span>
             </div>
@@ -37,7 +37,7 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
         </div>
         
         <div className="flex gap-3">
-          <button className="bg-secondary w-[254px] h-[37px] text-white px-3 py-3 flex items-center gap-2 text-[14px]">
+          <button className="bg-secondary font-medium w-[254px] h-[37px] text-white px-3 py-3 flex items-center gap-2 text-sm">
             <span className='w-1/4 justify-start'>
               <Image src="/send.png" alt="Adicionar" width={24} height={24} />
             </span>
@@ -49,43 +49,26 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
         </div>
       </div>
 
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-primary">📊</span>
-          <h3 className="text-lg font-semibold">Painel de estatísticas</h3>
-          <span className="text-gray-400 text-sm">últimos 7 dias</span>
+      <div className='mt-10'>
+        <div className="flex items-center gap-3 mb-6">
+          <Image src="/bubble.png" alt="Gráfico" width={24} height={24} />
+          <h1 className="text-lg">Painel de estatísticas</h1>
+          <span className="text-light-text text-sm">últimos 7 dias</span>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
-          <Card>
-            <div className="space-y-2">
-              <p className="text-gray-400 text-sm">Conta PJ</p>
-              <p className="text-2xl font-bold">{formatCurrency(estatisticas.contaPJ)}</p>
-              <button className="text-gray-400 text-sm hover:text-white transition-colors">
-                Ver mais detalhes
-              </button>
-            </div>
-          </Card>
-
-          <Card>
-            <div className="space-y-2">
-              <p className="text-gray-400 text-sm">Recebimentos</p>
-              <p className="text-2xl font-bold">{formatCurrency(estatisticas.recebimentos)}</p>
-              <button className="text-gray-400 text-sm hover:text-white transition-colors">
-                Ver mais detalhes
-              </button>
-            </div>
-          </Card>
-
-          <Card>
-            <div className="space-y-2">
-              <p className="text-gray-400 text-sm">Lucro</p>
-              <p className="text-2xl font-bold">{formatCurrency(estatisticas.lucro)}</p>
-              <button className="text-gray-400 text-sm hover:text-white transition-colors">
-                Ver mais detalhes
-              </button>
-            </div>
-          </Card>
+        <div className="flex justify-between gap-6">
+          <StatCard 
+            title="Conta PJ" 
+            value={formatCurrency(estatisticas.contaPJ)} 
+          />
+          <StatCard 
+            title="Recebimentos" 
+            value={formatCurrency(estatisticas.recebimentos)} 
+          />
+          <StatCard 
+            title="Lucro" 
+            value={formatCurrency(estatisticas.lucro)} 
+          />
         </div>
       </div>
     </div>
@@ -93,5 +76,6 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
 };
 
 export default StatsSection;
+
 
 

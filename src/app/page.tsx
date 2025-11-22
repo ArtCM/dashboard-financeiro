@@ -34,6 +34,7 @@ export default function Dashboard() {
           saldoTotal={data.saldoTotal}
           estatisticas={data.estatisticas}
         />
+        
       </main>
     </div>
   );
