@@ -46,17 +46,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
-
+      
       <main>
-        <StatsSection
+        <StatsSection 
           saldoTotal={data.saldoTotal}
           estatisticas={data.estatisticas}
         />
 
         <div className="bg-white">
-          <div className='flex justify-between items-start mt-[-160px] gap-24 space-y-6 pt-35 px-4 lg:px-10 container mx-auto'>
+          <div className='flex flex-col lg:flex-row justify-between items-start lg:mt-[-100px] lg:gap-24 space-y-6 pt-6 lg:pt-35 pb-10 px-4 lg:px-10 container mx-auto'>
             <TransacoesRecentes transacoes={transacoesMock} />
             <AnaliseGeral
               ganhos={analiseGeralMock.ganhos}
@@ -69,3 +69,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
