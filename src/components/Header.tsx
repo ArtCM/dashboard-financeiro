@@ -1,12 +1,29 @@
-import { Bell, Menu } from 'lucide-react';
+import { Bell, Menu, BellOff } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { toast } = useToast();
   const navItems = ['Dashboard', 'Pagamentos', 'Invoices', 'Insights'];
+
+  const handleNavClick = (item: string) => {
+    if (item !== 'Dashboard') {
+      toast({
+        title: "Em desenvolvimento",
+        description: "Esta funcionalidade ainda está em desenvolvimento.",
+      });
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="flex items-center justify-between p-4 lg:p-6 bg-background">
@@ -23,6 +40,7 @@ const Header = () => {
                 ? 'bg-primary text-white hover:bg-primary/90'
                 : 'text-gray-300 hover:text-white hover:bg-transparent'
             }`}
+            onClick={() => handleNavClick(item)}
           >
             {item}
           </Button>
@@ -30,13 +48,28 @@ const Header = () => {
       </nav>
 
       <div className="flex items-center gap-2">
-        <Button 
-          variant="ghost" 
-          size="icon"
-          className="p-2 text-gray-300 hover:text-white hover:bg-transparent transition-colors"
-        >
-          <Bell size={24} />
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className="p-2 text-gray-300 hover:text-white hover:bg-transparent transition-colors"
+            >
+              <Bell size={24} />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-80 p-4">
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <BellOff className="h-12 w-12 text-gray-400 mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                Nenhuma notificação
+              </h3>
+              <p className="text-sm text-gray-500">
+                Você não tem notificações no momento.
+              </p>
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
         
         {/* Mobile Menu Sheet */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -60,7 +93,7 @@ const Header = () => {
                       ? 'bg-primary text-white hover:bg-primary/90'
                       : 'text-gray-300 hover:text-white hover:bg-transparent'
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleNavClick(item)}
                 >
                   {item}
                 </Button>
@@ -74,6 +107,4 @@ const Header = () => {
 };
 
 export default Header;
-
-
 

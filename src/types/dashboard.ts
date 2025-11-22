@@ -32,6 +32,7 @@ export interface DashboardData {
         category: string;
         color: string;
         icon: string;
+        date: string;
       }>;
     };
     statistics: {
@@ -63,6 +64,8 @@ export interface ProcessedDashboardData {
     valor: number;
     cor: string;
     icone?: string;
+    data?: string;
+    categoria?: string;
   }>;
   analiseGeral: Array<{
     nome: string;
@@ -71,6 +74,7 @@ export interface ProcessedDashboardData {
     icone?: string;
   }>;
 }
+
 
 
 

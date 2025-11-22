@@ -16,7 +16,9 @@ const processApiData = (apiData: DashboardData): ProcessedDashboardData => {
     nome: item.merchant || 'Transação',
     valor: item.amount || 0,
     cor: item.color || '#FF6B6B',
-    icone: item.icon || 'shopping_cart'
+    icone: item.icon || 'shopping_cart',
+    data: item.date || '',
+    categoria: item.category || ''
   })) || [];
 
   const cards = apiData.dashboard?.statistics?.cards || [];
@@ -69,6 +71,7 @@ export const useDashboardData = () => {
 
   return { data, loading, error };
 };
+
 
 
 
