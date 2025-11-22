@@ -56,7 +56,7 @@ export default function Dashboard() {
         />
 
         <div className="bg-white">
-          <div className='flex flex-col lg:flex-row justify-between items-start lg:mt-[-100px] lg:gap-24 space-y-6 pt-6 lg:pt-35 pb-10 px-4 lg:px-10 container mx-auto'>
+          <div className='flex flex-col lg:flex-row justify-between items-start mt-[-115px] lg:mt-[-100px] lg:gap-24 space-y-6 pt-28 lg:pt-35 pb-10 px-4 lg:px-10 container mx-auto'>
             <TransacoesRecentes transacoes={transacoesMock} />
             <AnaliseGeral
               ganhos={analiseGeralMock.ganhos}

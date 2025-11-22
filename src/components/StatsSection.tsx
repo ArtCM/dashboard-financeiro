@@ -56,7 +56,32 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
           <span className="text-light-text text-sm">últimos 7 dias</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile Carousel */}
+        <div className="md:hidden">
+          <div className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="flex-none snap-center">
+              <StatCard 
+                title="Conta PJ" 
+                value={formatCurrency(estatisticas.contaPJ)} 
+              />
+            </div>
+            <div className="flex-none snap-center">
+              <StatCard 
+                title="Recebimentos" 
+                value={formatCurrency(estatisticas.recebimentos)} 
+              />
+            </div>
+            <div className="flex-none snap-center">
+              <StatCard 
+                title="Lucro" 
+                value={formatCurrency(estatisticas.lucro)} 
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <StatCard 
             title="Conta PJ" 
             value={formatCurrency(estatisticas.contaPJ)} 
@@ -76,6 +101,7 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
 };
 
 export default StatsSection;
+
 
 
 

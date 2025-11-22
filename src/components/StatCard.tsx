@@ -5,7 +5,7 @@ interface StatCardProps {
 
 const StatCard = ({ title, value }: StatCardProps) => {
   return (
-    <div className="bg-white py-4 overflow-hidden shadow-sm w-full max-w-[400px]">
+    <div className="bg-white py-4 overflow-hidden shadow-sm w-full max-w-[400px] md:max-w-[400px] min-w-[320px] md:min-w-0">
       <div className="px-6 pb-8 flex flex-col gap-4 text-black">
         <p className="text-sm mb-1 font-medium">{title}</p>
         <p className="text-2xl font-medium">{value}</p>
@@ -43,3 +43,4 @@ const StatCard = ({ title, value }: StatCardProps) => {
 };
 
 export default StatCard;
+
