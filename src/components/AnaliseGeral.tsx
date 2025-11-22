@@ -4,6 +4,7 @@ interface ItemAnalise {
   nome: string;
   porcentagem: number;
   cor: string;
+  icone?: string;
 }
 
 interface AnaliseGeralProps {
@@ -18,6 +19,15 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
       style: 'currency', 
       currency: 'BRL' 
     }).format(value);
+
+  const getIconPath = (iconName: string) => {
+    const iconMap: { [key: string]: string } = {
+      'shopping_cart': '/cart.png',
+      'receipt': '/boleto.png', 
+      'trending_up': '/arrow-up.png'
+    };
+    return iconMap[iconName] || '/cart.png';
+  };
 
   return (
     <div className="w-full rounded-lg p-6">
@@ -48,9 +58,11 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
           <div key={index} className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div 
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: item.cor }}
+                <Image 
+                  src={getIconPath(item.icone || 'shopping_cart')} 
+                  alt={item.nome} 
+                  width={16} 
+                  height={16} 
                 />
                 <span className="text-gray-700 text-sm">{item.nome}</span>
               </div>
@@ -75,3 +87,5 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
 };
 
 export default AnaliseGeral;
+
+

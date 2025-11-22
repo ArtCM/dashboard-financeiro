@@ -27,24 +27,6 @@ export default function Dashboard() {
 
   if (!data) return null;
 
-  const transacoesMock = [
-    { id: '1', nome: 'Mercadinho da Cidade', valor: 10.98, cor: '#FDFF9D' },
-    { id: '2', nome: 'Tenda Nostra', valor: 26.38, cor: '#FF9D9D' },
-    { id: '3', nome: 'Farmácia Um', valor: 43.17, cor: '#C8FF9D' },
-    { id: '4', nome: 'Academia Body', valor: 69.12, cor: '#AB9DFF' },
-    { id: '5', nome: 'ShopOnline', valor: 135.24, cor: '#FF9DEF' },
-  ];
-
-  const analiseGeralMock = {
-    ganhos: 2789.21,
-    saidas: 1278.47,
-    itens: [
-      { nome: 'Compras', porcentagem: 62, cor: '#FF6B6B' },
-      { nome: 'Boletos', porcentagem: 14, cor: '#9B59B6' },
-      { nome: 'Investimentos', porcentagem: 5, cor: '#4ECDC4' },
-    ],
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -57,11 +39,11 @@ export default function Dashboard() {
 
         <div className="bg-white">
           <div className='flex flex-col lg:flex-row justify-between items-start mt-[-115px] lg:mt-[-100px] lg:gap-24 space-y-6 pt-28 lg:pt-35 pb-10 px-4 lg:px-10 container mx-auto'>
-            <TransacoesRecentes transacoes={transacoesMock} />
+            <TransacoesRecentes transacoes={data.transacoes} />
             <AnaliseGeral
-              ganhos={analiseGeralMock.ganhos}
-              saidas={analiseGeralMock.saidas}
-              itens={analiseGeralMock.itens}
+              ganhos={2789.21}
+              saidas={1278.47}
+              itens={data.analiseGeral}
             />
           </div>
         </div>
@@ -69,4 +51,6 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
 

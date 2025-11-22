@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = localFont({
   src: [
@@ -42,9 +43,11 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${poppins.variable} font-poppins antialiased`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
 }
+
 
 

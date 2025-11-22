@@ -1,9 +1,20 @@
+import { useToast } from "@/hooks/use-toast";
+
 interface StatCardProps {
   title: string;
   value: string;
 }
 
 const StatCard = ({ title, value }: StatCardProps) => {
+  const { toast } = useToast();
+
+  const showToast = () => {
+    toast({
+      title: "Dados limitados",
+      description: "Infelizmente só temos o valor dos últimos 7 dias, estamos trabalhando para conseguir mais dados.",
+    });
+  };
+
   return (
     <div className="bg-white py-4 overflow-hidden shadow-sm w-full max-w-[400px] md:max-w-[400px] min-w-[320px] md:min-w-0">
       <div className="px-6 pb-8 flex flex-col gap-4 text-black">
@@ -12,10 +23,16 @@ const StatCard = ({ title, value }: StatCardProps) => {
       </div>
 
       <div className="px-6 py-3 flex items-center justify-between gap-3">
-        <button className="text-[#686868] h-[37px] w-full text-sm hover:bg-gray-100 hover:text-gray-700 border border-[#686868]">
+        <button 
+          onClick={showToast}
+          className="text-[#686868] h-[37px] w-full text-sm hover:bg-gray-100 hover:text-gray-700 border border-[#686868]"
+        >
           Ver mais detalhes
         </button>
-        <button className="text-gray-400 h-[37px] w-[46px] hover:bg-gray-100 flex items-center justify-center p-1 border border-[#686868]">
+        <button 
+          onClick={showToast}
+          className="text-gray-400 h-[37px] w-[46px] hover:bg-gray-100 flex items-center justify-center p-1 border border-[#686868]"
+        >
           <svg
             width="24"
             height="24"
@@ -31,10 +48,6 @@ const StatCard = ({ title, value }: StatCardProps) => {
               d="M21 12.75H3C2.59 12.75 2.25 12.41 2.25 12C2.25 11.59 2.59 11.25 3 11.25H21C21.41 11.25 21.75 11.59 21.75 12C21.75 12.41 21.41 12.75 21 12.75Z"
               fill="#292D32"
             />
-            <path
-              d="M21 17.75H3C2.59 17.75 2.25 17.41 2.25 17C2.25 16.59 2.59 16.25 3 16.25H21C21.41 16.25 21.75 16.59 21.75 17C21.75 17.41 21.41 17.75 21 17.75Z"
-              fill="#292D32"
-            />
           </svg>
         </button>
       </div>
@@ -43,4 +56,6 @@ const StatCard = ({ title, value }: StatCardProps) => {
 };
 
 export default StatCard;
+
+
 
