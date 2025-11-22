@@ -47,7 +47,7 @@ O projeto é um dashboard financeiro moderno para controle de gastos e receitas.
 
 # Deploy
 
-## [Clique aqui e veja a aplicação online](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+## [Clique aqui e veja a aplicação online](https://dashboard-financeiro-7aaxjm1cn-arthur-correas-projects.vercel.app)
 
 <br>
 
