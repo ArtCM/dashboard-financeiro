@@ -1,6 +1,6 @@
-import { TrendingUp } from 'lucide-react';
 import Card from './Card';
 import { ProcessedDashboardData } from '@/src/types/dashboard';
+import Image from 'next/image';
 
 interface StatsSectionProps {
   saldoTotal?: ProcessedDashboardData['saldoTotal'];
@@ -26,23 +26,25 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-gray-400 text-sm mb-2">Saldo total</p>
+          <p className="text-md mb-2">Saldo total</p>
           <div className="flex items-center gap-4">
-            <h2 className="text-4xl font-bold">{formatCurrency(saldoTotal.valor)}</h2>
-            <div className="flex items-center gap-1 text-warning">
-              <TrendingUp size={16} />
+            <h2 className="text-4xl">{formatCurrency(saldoTotal.valor)}</h2>
+            <div className="flex items-center gap-1">
+              <Image src="/thunder.png" alt="Rendimento" width={24} height={24} />
               <span className="text-sm">rendendo {saldoTotal.rendimento}%</span>
             </div>
           </div>
         </div>
         
         <div className="flex gap-3">
-          <button className="bg-secondary text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2">
-            <span>✈️</span>
+          <button className="bg-secondary w-[254px] h-[37px] text-white px-3 py-3 flex items-center gap-2 text-[14px]">
+            <span className='w-1/4 justify-start'>
+              <Image src="/send.png" alt="Adicionar" width={24} height={24} />
+            </span>
             Enviar dinheiro
           </button>
-          <button className="bg-secondary text-white px-4 py-3 rounded-lg">
-            +
+          <button className="bg-secondary max-w-[56px] max-h-[37px] flex items-center justify-center text-white px-4 py-3">
+            <Image src="/add.png" alt="Adicionar" width={24} height={24} />
           </button>
         </div>
       </div>
