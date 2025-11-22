@@ -23,7 +23,7 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
   }
 
   return (
-    <div className="space-y-6 px-4 lg:px-10 container mx-auto">
+    <div className="space-y-6 px-4 lg:px-10 py-16 container mx-auto">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-md mb-2 font-medium">Saldo total</p>
@@ -76,6 +76,5 @@ const StatsSection = ({ saldoTotal, estatisticas }: StatsSectionProps) => {
 };
 
 export default StatsSection;
-
 
 

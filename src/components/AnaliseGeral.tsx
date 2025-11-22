@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ItemAnalise {
   nome: string;
   porcentagem: number;
@@ -18,10 +20,10 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
     }).format(value);
 
   return (
-    <div className="bg-white rounded-lg p-6">
+    <div className="w-full rounded-lg p-6">
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <span className="text-gray-400">⚪</span>
+        <div className="flex items-center gap-4">
+          <Image src="/general-analytics.png" alt="Gráfico" width={24} height={24} />
           <h3 className="text-lg font-semibold text-gray-900">Análise geral</h3>
           <span className="text-gray-400 text-sm">últimos 7 dias</span>
         </div>
@@ -30,7 +32,7 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
         </button>
       </div>
 
-      <div className="flex justify-between mb-6">
+      <div className="flex justify-between mb-6 border-y py-5 px-3 border-[#B3B3B3]">
         <div>
           <p className="text-gray-500 text-sm mb-1">Ganhos</p>
           <p className="text-xl font-bold text-gray-900">{formatCurrency(ganhos)}</p>
@@ -43,7 +45,7 @@ const AnaliseGeral = ({ ganhos, saidas, itens }: AnaliseGeralProps) => {
 
       <div className="space-y-4">
         {itens.map((item, index) => (
-          <div key={index} className="space-y-2">
+          <div key={index} className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div 
